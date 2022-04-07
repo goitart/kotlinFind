@@ -6,8 +6,8 @@ import org.kohsuke.args4j.Option;
 public class FindLauncher {
 
     @Option(name = "-d", usage = "Directory")
-//    private String directory;
-    private Boolean isD;
+    private String directory;
+//    private Boolean isD;
 
     @Option(name = "-r", usage = "Find in subdirectories")
     private Boolean subDirectories;
@@ -15,12 +15,13 @@ public class FindLauncher {
     @Argument(required = true, metaVar = "InputName", usage = "File to be found")
     private String InputFileName;
 
-    @Argument(metaVar = "InputDirectory", usage = "Directory")
-    private String directory;
+//    @Argument(metaVar = "InputDirectory", usage = "Directory")
+//    private String directory;
 
     public static void main(String[] args) {
         new FindLauncher().launch(args);
     }
+
     private void launch(String[] args) {
         CmdLineParser parser = new CmdLineParser(this);
 
@@ -33,6 +34,6 @@ public class FindLauncher {
             throw new IllegalArgumentException("");
         }
 //        FindK find = new FindK(InputFileName, directory);
-        FindKt.start(InputFileName, directory, subDirectories, isD);
+        FindKt.start(InputFileName, directory, subDirectories);
     }
 }

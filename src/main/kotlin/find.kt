@@ -110,11 +110,22 @@ fun findInAll(fileS: String, directoryS: String) {
 
 }
 
-fun start(InputFileName: String, directory: String, subDirectories: Boolean, isD: Boolean) {
-    if (!isD) {
-//        val file = File("find.kt")
-//        val directoryN = file.absolutePath
-//        find(InputFileName, directoryN)
+fun start(InputFileName: String, directory: String, subDirectories: Boolean) {
+    if (directory == null && subDirectories == false) {
+        val file = File(InputFileName)
+        val directoryN = file.absolutePath
+        findFile(InputFileName, directoryN)
+    }
+    if (directory == null && subDirectories == true) {
+        val file = File(InputFileName)
+        val directoryN = file.absolutePath
+        findInAll(InputFileName, directoryN)
+    }
+    if (directory != null && subDirectories == false) {
+        findFile(InputFileName, directory)
+    }
+    if (directory != null && subDirectories == true) {
+        findInAll(InputFileName, directory)
     }
 }
 
