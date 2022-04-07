@@ -6,7 +6,7 @@ import org.kohsuke.args4j.Option;
 public class FindLauncher {
 
     @Option(name = "-d", usage = "Directory")
-    private String directory;
+//    private String directory;
     private Boolean isD;
 
     @Option(name = "-r", usage = "Find in subdirectories")
@@ -14,6 +14,9 @@ public class FindLauncher {
 
     @Argument(required = true, metaVar = "InputName", usage = "File to be found")
     private String InputFileName;
+
+    @Argument(metaVar = "InputDirectory", usage = "Directory")
+    private String directory;
 
     public static void main(String[] args) {
         new FindLauncher().launch(args);
@@ -25,7 +28,7 @@ public class FindLauncher {
             parser.parseArgument(args);
         } catch (CmdLineException e) {
             System.err.println(e.getMessage());
-//            System.err.println(e.getMessage());
+            System.err.println("find [-r] [-d directory] filename.txt");
             parser.printUsage(System.err);
             throw new IllegalArgumentException("");
         }

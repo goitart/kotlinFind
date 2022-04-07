@@ -6,6 +6,16 @@
 
 import java.io.File
 
+fun main(args : Array<String>) {
+    FindLauncher.main(args)
+//    val directory1 = "C:\\Users\\chevy\\OneDrive\\Документы\\Samsung"
+//    val currentFile1 = "rty.txt"
+//
+//    findInAll(currentFile1, directory1)
+//    find(currentFile1, directory1)
+
+}
+
 //class Fin(InputFileName: String, directory: String) {
 //    fun find(InputFileName: String, directory: String) {
 //        val file = File(InputFileName)
@@ -57,7 +67,7 @@ import java.io.File
 //    }
 //}
 
-fun find(fileS: String, directoryS: String) {
+fun findFile(fileS: String, directoryS: String) {
     val file = File(fileS)
     val directory = File(directoryS)
     val br = directory.list()
@@ -108,12 +118,3 @@ fun start(InputFileName: String, directory: String, subDirectories: Boolean, isD
     }
 }
 
-fun main(args : Array<String>) {
-    FindLauncher.main(args)
-//    val directory1 = "C:\\Users\\chevy\\OneDrive\\Документы\\Samsung"
-//    val currentFile1 = "rty.txt"
-//
-//    findInAll(currentFile1, directory1)
-//    find(currentFile1, directory1)
-
-}
