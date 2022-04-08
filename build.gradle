@@ -24,11 +24,25 @@ test {
 }
 
 application {
-    mainClass = 'findFileKt'
+    mainClass = 'FindLauncher'
 }
+
+mainClassName = 'FindLauncher'
 
 jar {
     manifest {
-        attributes 'Main-Class': 'FindLauncher'
+        attributes 'Main-Class': "${mainClassName}"
+    }
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
     }
 }
+
+//task fatJar(type: Jar) {
+//    manifest {
+//        attributes 'Main-Class': "${mainClassName}"
+//    }
+//    archiveBaseName = "${rootProject.name}"
+//    from { configurations.compileClasspath.collect { it.isDirectory() ? it : zipTree(it) } }
+//    with jar
+//}

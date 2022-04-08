@@ -8,64 +8,8 @@ import java.io.File
 
 fun main(args : Array<String>) {
     FindLauncher.main(args)
-//    val directory1 = "C:\\Users\\chevy\\OneDrive\\Документы\\Samsung"
-//    val currentFile1 = "rty.txt"
-//
-//    findInAll(currentFile1, directory1)
-//    find(currentFile1, directory1)
-
+    println(args.toList())
 }
-
-//class Fin(InputFileName: String, directory: String) {
-//    fun find(InputFileName: String, directory: String) {
-//        val file = File(InputFileName)
-//        val directoryF = File(directory)
-//        val br = directoryF.list()
-//        val brbr = directoryF.listFiles()
-//        if (br == null) {
-//            return
-//        }
-//        if (brbr != null) {
-//            if (brbr.toList().isNotEmpty()) {
-//                if (file.toString() in br.toList()) {
-//                    //true
-//                    println(directoryF.absolutePath + "\\" + file)
-//                    return
-//                } else println("Файл не найден")
-//            }
-//        }
-//    }
-//
-//    fun findInAll(InputFileName: String, directory: String) {
-//        val file = File(InputFileName)
-//        val directoryF = File(directory)
-//        val br = directoryF.list()
-//        val brbr = directoryF.listFiles()
-//        if (brbr == null) {
-//            return
-//        }
-//        if (brbr.toList().isNotEmpty()) {
-//            if (file.toString() in br.toList()) {
-//                //true
-//                count ++
-//                println(directoryF.absolutePath + "\\" + file)
-//                return
-//            } else {
-//                for (files in brbr.toList()) {
-//                    findInAll(file.toString(), files.toString())
-//                }
-//            }
-//        }
-//
-//    }
-//    fun start(InputFileName: String, directory: String) {
-//        if (directory == "") {
-//            val file = File("find.kt")
-//            val directoryN = file.absolutePath
-//            find(InputFileName, directoryN)
-//        }
-//    }
-//}
 
 fun findFile(fileS: String, directoryS: String) {
     val file = File(fileS)
@@ -110,22 +54,9 @@ fun findInAll(fileS: String, directoryS: String) {
 
 }
 
-fun start(InputFileName: String, directory: String, subDirectories: Boolean) {
-    if (directory == null && subDirectories == false) {
-        val file = File(InputFileName)
-        val directoryN = file.absolutePath
-        findFile(InputFileName, directoryN)
-    }
-    if (directory == null && subDirectories == true) {
-        val file = File(InputFileName)
-        val directoryN = file.absolutePath
-        findInAll(InputFileName, directoryN)
-    }
-    if (directory != null && subDirectories == false) {
+fun start(subDirectories: Boolean, isD: Boolean, directory: String, InputFileName: String) {
+    if (!subDirectories) {
         findFile(InputFileName, directory)
-    }
-    if (directory != null && subDirectories == true) {
-        findInAll(InputFileName, directory)
-    }
+    } else findInAll(InputFileName, directory)
 }
 
