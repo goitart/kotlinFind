@@ -29,7 +29,7 @@ fun findFile(fileS: String, directoryS: String): Set<String> {
     if (setOfFiles.isEmpty()) return setOf("not found")
     return setOfFiles
 }
-var count = 0
+
 var setOfFiles = mutableSetOf<String>()
 
 fun findInAll(fileS: String, directoryS: String): Set<String> {
@@ -42,7 +42,6 @@ fun findInAll(fileS: String, directoryS: String): Set<String> {
     }
     if (dirListFiles.toList().isNotEmpty()) {
         if (file.toString() in directoryList.toList()) {
-            count ++
             setOfFiles.add(directory.absolutePath + "\\" + file)
         }
         for (files in dirListFiles.toList()) {
@@ -67,7 +66,6 @@ fun start(subDirectories: Boolean, directory: String, InputFileName: String): Se
         }
         setOfFiles.clear()
         return findInAll(InputFileName, directory)
-
     }
 }
 
