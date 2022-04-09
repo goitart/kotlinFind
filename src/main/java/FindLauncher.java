@@ -9,17 +9,13 @@ import java.io.File;
 public class FindLauncher {
 
     @Option(name = "-d", usage = "Directory")
-    private Boolean isD = false;
+    private String directory = new File("").getAbsolutePath().toString();;
 
     @Option(name = "-r", usage = "Find in subdirectories")
     private Boolean subDirectories = false;
 
     @Argument(required = true, metaVar = "InputName", index = 0, usage = "File to be found")
     private String InputFileName;
-
-    @Argument(metaVar = "InputDirectory", index = 1, usage = "Directory")
-    private String directory = new File("").getAbsolutePath().toString();
-//    private String directory = "C:\\Users\\chevy\\IdeaProjects\\kotlinFind";
 
     public static void main(String[] args) {
         new FindLauncher().launch(args);
@@ -40,7 +36,7 @@ public class FindLauncher {
 //        System.out.println(isD);
 //        System.out.println(subDirectories);
 
-        FindKt.start(subDirectories, isD, directory, InputFileName);
+        FindKt.start(subDirectories, directory, InputFileName);
 
     }
 }

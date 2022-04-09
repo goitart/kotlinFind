@@ -53,7 +53,7 @@ fun findInAll(fileS: String, directoryS: String): Set<String> {
     return setOfFiles
 }
 
-fun start(subDirectories: Boolean, isD: Boolean, directory: String, InputFileName: String): Set<String> {
+fun start(subDirectories: Boolean, directory: String, InputFileName: String): Set<String> {
     if (!subDirectories) {
         println(findFile(InputFileName, directory))
         return findFile(InputFileName, directory)
