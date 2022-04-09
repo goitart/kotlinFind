@@ -32,10 +32,6 @@ public class FindLauncher {
             throw new IllegalArgumentException("");
         }
 
-//        System.out.println(directory);
-//        System.out.println(isD);
-//        System.out.println(subDirectories);
-
         FindKt.start(subDirectories, directory, InputFileName);
 
     }

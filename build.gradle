@@ -37,12 +37,3 @@ jar {
         configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
     }
 }
-
-//task fatJar(type: Jar) {
-//    manifest {
-//        attributes 'Main-Class': "${mainClassName}"
-//    }
-//    archiveBaseName = "${rootProject.name}"
-//    from { configurations.compileClasspath.collect { it.isDirectory() ? it : zipTree(it) } }
-//    with jar
-//}

@@ -14,14 +14,14 @@ fun main(args : Array<String>) {
 fun findFile(fileS: String, directoryS: String): Set<String> {
     val file = File(fileS)
     val directory = File(directoryS)
-    val br = directory.list()
-    val brbr = directory.listFiles()
-    if (br == null) {
-        return setOfFiles
+    val directoryList = directory.list()
+    val dirListFiles = directory.listFiles()
+    if (directoryList == null) {
+        return setOf("File not found")
     }
-    if (brbr != null) {
-        if (brbr.toList().isNotEmpty()) {
-            if (file.toString() in br.toList()) {
+    if (dirListFiles != null) {
+        if (dirListFiles.toList().isNotEmpty()) {
+            if (file.toString() in directoryList.toList()) {
                 setOfFiles.add(directory.absolutePath + "\\" + file)
             } else println("Файл не найден")
         }
@@ -35,17 +35,17 @@ var setOfFiles = mutableSetOf<String>()
 fun findInAll(fileS: String, directoryS: String): Set<String> {
     val file = File(fileS)
     val directory = File(directoryS)
-    val br = directory.list()
-    val brbr = directory.listFiles()
-    if (brbr == null) {
-        return setOfFiles
+    val directoryList = directory.list()
+    val dirListFiles = directory.listFiles()
+    if (dirListFiles == null || directoryList == null) {
+        return setOf("File not found")
     }
-    if (brbr.toList().isNotEmpty()) {
-        if (file.toString() in br.toList()) {
+    if (dirListFiles.toList().isNotEmpty()) {
+        if (file.toString() in directoryList.toList()) {
             count ++
             setOfFiles.add(directory.absolutePath + "\\" + file)
         }
-        for (files in brbr.toList()) {
+        for (files in dirListFiles.toList()) {
             findInAll(file.toString(), files.toString())
         }
     }
@@ -56,10 +56,14 @@ fun findInAll(fileS: String, directoryS: String): Set<String> {
 fun start(subDirectories: Boolean, directory: String, InputFileName: String): Set<String> {
     if (!subDirectories) {
         println(findFile(InputFileName, directory))
+        setOfFiles.clear()
         return findFile(InputFileName, directory)
+
     } else {
         println(findInAll(InputFileName, directory))
+        setOfFiles.clear()
         return findInAll(InputFileName, directory)
+
     }
 }
 
