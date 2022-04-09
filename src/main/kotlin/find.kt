@@ -17,16 +17,16 @@ fun findFile(fileS: String, directoryS: String): Set<String> {
     val directoryList = directory.list()
     val dirListFiles = directory.listFiles()
     if (directoryList == null) {
-        return setOf("File not found")
+        return setOf("not found")
     }
     if (dirListFiles != null) {
         if (dirListFiles.toList().isNotEmpty()) {
             if (file.toString() in directoryList.toList()) {
                 setOfFiles.add(directory.absolutePath + "\\" + file)
-            } else println("Файл не найден")
+            }
         }
     }
-    if (setOfFiles.isEmpty()) return setOf("File not found")
+    if (setOfFiles.isEmpty()) return setOf("not found")
     return setOfFiles
 }
 var count = 0
@@ -38,7 +38,7 @@ fun findInAll(fileS: String, directoryS: String): Set<String> {
     val directoryList = directory.list()
     val dirListFiles = directory.listFiles()
     if (dirListFiles == null || directoryList == null) {
-        return setOf("File not found")
+        return setOf("not found")
     }
     if (dirListFiles.toList().isNotEmpty()) {
         if (file.toString() in directoryList.toList()) {
@@ -49,18 +49,22 @@ fun findInAll(fileS: String, directoryS: String): Set<String> {
             findInAll(file.toString(), files.toString())
         }
     }
-    if (setOfFiles.isEmpty()) return setOf("File not found")
+    if (setOfFiles.isEmpty()) return setOf("not found")
     return setOfFiles
 }
 
 fun start(subDirectories: Boolean, directory: String, InputFileName: String): Set<String> {
     if (!subDirectories) {
-        println(findFile(InputFileName, directory))
+        for (file in findFile(InputFileName, directory)) {
+            println("File: $file")
+        }
         setOfFiles.clear()
         return findFile(InputFileName, directory)
 
     } else {
-        println(findInAll(InputFileName, directory))
+        for (file in findInAll(InputFileName, directory)) {
+            println("File: $file")
+        }
         setOfFiles.clear()
         return findInAll(InputFileName, directory)
 
