@@ -7,22 +7,22 @@ class Test {
     @Test
     fun startTest1() {
         assertEquals(
-            setOf("File not found"),
+            setOf<String>(),
             start(false, File("").absolutePath.toString(), "file3.txt")
         )
 
         assertEquals(
-            setOf(File("").absolutePath.toString() + "\\src\\test\\files\\file2.txt"),
+            setOf("file2.txt"),
             start(false, (File("").absolutePath.toString() + "\\src\\test\\files"), "file2.txt")
         )
 
         assertEquals(
-            setOf("File not found"),
+            setOf<String>(),
             start(true, File("").absolutePath.toString(), "file3.txt")
         )
 
         assertEquals(
-            setOf("File not found"),
+            setOf<String>(),
             start(false, File("").absolutePath.toString(), "file2.txt")
         )
 
