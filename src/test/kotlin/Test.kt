@@ -35,5 +35,10 @@ class Test {
             setOf(File("").absolutePath.toString() + "\\src\\test\\files\\file1.txt"),
             start(true, File("").absolutePath.toString(), "file1.txt")
         )
+
+        assertEquals(
+            setOf(File("").absolutePath.toString() + "\\src\\test\\files\\subDir\\not found.txt"),
+            start(true, File("").absolutePath.toString(), "not found.txt")
+        )
     }
 }
